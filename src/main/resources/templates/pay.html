@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymelaef/layout"
+      layout:decorator="tmpl1">
+<head>
+<meta charset="utf-8"/>
+<title>Pay</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+<div class="col-md-3 col-md-offset-3">
+<div class="panel panel-primary">
+<div class="panel-heading"> Tansfers Accounts</div>
+<div class="panel-body">
+<form th:action="@{/pay}" method="post">
+	<div> 
+	<label>From         </label>
+	<input type="text" name="from" th:value="${from}"/>
+	</div>
+	<div>
+	<label>To             </label>
+	<input type="text" name="to" th:value="${to}"/>
+	</div>
+	<div>
+	<label>Amount    </label>
+	<input type="text" name="amount" th:value="${to}"/>
+	</div> 
+	<button type="submit" class="btn btn-primary"> Send</button>
+
+
+
+</form>
+<div th:if="${ex3}" th:text="${ex3}"></div>
+<div th:if="${ex1}" th:text="${ex1.message}"></div>
+<div th:if="${ex2}" th:text="${ex2.message}"></div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
+</div>
+
+</body>
+</html>

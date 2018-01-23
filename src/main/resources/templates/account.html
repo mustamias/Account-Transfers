@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymelaef/layout"
+      layout:decorator="tmpl1">
+       
+      
+<head>
+<meta charset="utf-8"/>
+<title>Account Transfer</title>
+</head>
+<body>
+
+<div layout:fragment = "content" >
+
+<div class = "col-md-6">
+
+<div class="panel panel-primary">
+<div class="panel-heading">Accounts</div>
+<div class="panel-body"></div>
+
+<table class="table table-striped">
+<tr>
+<th> Name</th><th> Balance</th><th> Email</th> 
+
+</tr>
+<tr th:each="account:${list}" >
+<td  >  <a th:href="@{/transfers/(par=${account.name})}"> <span th:text="${account.name}"></span> </a>  </td>
+<td th:text="${account.balance}"> </td><td th:text="${account.email}"> </td>
+
+
+</tr>
+</table>
+<div th:if="${err}" th:text="${err.message}"></div>
+</div>
+
+
+</div>
+
+
+<div class = "col-md-6">
+
+<div class="panel panel-primary" th:if="${account}">
+<div class="panel-heading"><span th:text="${account.name}"></span> Transfers Details </div>
+<div class="panel-body"></div>
+
+<table class="table table-striped">
+<tr>
+<th> Num</th><th> Amount</th><th>  Date</th><th> FromOrTO</th> <th> Type</th>
+
+</tr>
+<tr th:each="t:${transfers}">
+<td th:text="${t.id_transfer}"> </td><td th:text="${t.amount}"> </td>
+<td th:text="${t.date_transfer}"> </td><td th:text="${t.FromOrTO}"> </td>
+<td th:text="${t.type_transfer}"> </td>
+
+</tr>
+</table>
+
+</div>
+
+</div>
+
+</div>
+</body>
+</html>
